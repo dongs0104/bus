@@ -1,6 +1,9 @@
 #-*- coding: utf-8 -*-
 import urllib2
 from bs4 import BeautifulSoup
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ip = "211.236.110.97"
 ip2 = "211.236.110.110"
@@ -12,7 +15,7 @@ elif urllib2.urlopen("http://"+ip2).getcode() == 200:
 #contents open
 html = urllib2.urlopen(url).read()
 soup = BeautifulSoup(html,"lxml")
-bus = open("/var/www/html/webapp/buson132.txt", 'w')
+bus = open("/var/www/html/webapp/buson132-2.txt", 'w')
 for ultag in soup.find_all('ul', {'class': 'arrive_desc'}):
     busNo = ultag.find('li', {'class': 'bus_no'})
     busState = ultag.find('li', {'class': 'bus_state'})
@@ -21,6 +24,6 @@ for ultag in soup.find_all('ul', {'class': 'arrive_desc'}):
         busLocal = '기점출발예정'
     else:
         busLocal =  busLocal.text
-    bus.write(busNo.text + ' ' + busState.text + busLocal)
+    bus.write(busNo.text + ' ' + busState.text + busLocal + "</br>")
 bus.close()
 
