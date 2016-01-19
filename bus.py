@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 ip = "211.236.110.97"
-ip2 = "211.236.110.110"
+ip2 = "211.236.110.100"
 #serverCheck
 if urllib2.urlopen("http://"+ip).getcode() == 200:
     url = "http://"+ ip +"/GMBIS/m/page/srchBusArr.do?act=srchBusArr&stopId=132&stopKname=%EA%B8%88%EC%98%A4%EA%B3%B5%EB%8C%80%EC%A2%85%EC%A0%90&menuCode=1_03&stopServiceid=10132"
