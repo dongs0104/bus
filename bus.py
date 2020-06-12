@@ -5,13 +5,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-ip = "211.236.110.97"
-ip2 = "211.236.110.100"
+IP = { "MAIN":  "211.236.110.97", "SUB": "211.236.110.100" }
 #serverCheck
-if urllib2.urlopen("http://"+ip).getcode() == 200:
-    url = "http://"+ ip +"/GMBIS/m/page/srchBusArr.do?act=srchBusArr&stopId=132&stopKname=%EA%B8%88%EC%98%A4%EA%B3%B5%EB%8C%80%EC%A2%85%EC%A0%90&menuCode=1_03&stopServiceid=10132"
-elif urllib2.urlopen("http://"+ip2).getcode() == 200:
-    url = "http://"+ ip2 +"/GMBIS/m/page/srchBusArr.do?act=srchBusArr&stopId=132&stopKname=%EA%B8%88%EC%98%A4%EA%B3%B5%EB%8C%80%EC%A2%85%EC%A0%90&menuCode=1_03&stopServiceid=10132"
+if urllib2.urlopen("http://"+IP["MAIN"]).getcode() == 200:
+    url = "http://"+ IP["MAIN"] +"/GMBIS/m/page/srchBusArr.do?act=srchBusArr&stopId=132&stopKname=%EA%B8%88%EC%98%A4%EA%B3%B5%EB%8C%80%EC%A2%85%EC%A0%90&menuCode=1_03&stopServiceid=10132"
+elif urllib2.urlopen("http://"+IP["SUB"]).getcode() == 200:
+    url = "http://"+ IP["SUB"] +"/GMBIS/m/page/srchBusArr.do?act=srchBusArr&stopId=132&stopKname=%EA%B8%88%EC%98%A4%EA%B3%B5%EB%8C%80%EC%A2%85%EC%A0%90&menuCode=1_03&stopServiceid=10132"
 #contents open
 html = urllib2.urlopen(url).read()
 soup = BeautifulSoup(html,"lxml")
